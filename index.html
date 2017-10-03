@@ -1,0 +1,28 @@
+<html>
+    <body>
+        <h1>Consumo de APIs</h1>
+        <button id="cargar">Cargar datos</button>
+        <br><br>
+        <div id="container"><h3>Esperando click para cargar datos</h3></div>
+
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="./template.js"></script>
+        <script>
+            var container = document.getElementById('container')
+           
+            var button = document.getElementById('cargar')
+           
+            var cargarDatos = (e) => {
+                container.innerHTML = '...cargando datos'
+                axios
+                    .get('https://reqres.in/api/users')
+                    .then(res => res.data.data)
+                    .then(data => makeTemplate(data))
+                    .then(template => container.innerHTML = template)
+            }
+           
+            button.addEventListener('click', cargarDatos)
+
+        </script>
+    </body>
+</html>
