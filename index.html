@@ -1,7 +1,7 @@
 <html>
     <body>
         <h1>Consumo de APIs</h1>
-        <button id="cargar">Cargar datos</button>
+        <button id="load">Cargar datos</button>
         <br><br>
         <div id="container"><h3>Esperando click para cargar datos</h3></div>
 
@@ -10,7 +10,7 @@
         <script>
             var container = document.getElementById('container')
            
-            var button = document.getElementById('cargar')
+            var button = document.getElementById('load')
            
             var cargarDatos = (e) => {
                 container.innerHTML = '...cargando datos'
