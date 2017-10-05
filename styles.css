@@ -1,0 +1,4 @@
+*{font-family: Roboto;}
+.flex{display: flex}
+.container {max-height: 100vh; overflow: auto; max-width: 50%;}
+.container .ids{display: none;}
