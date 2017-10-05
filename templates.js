@@ -12,7 +12,7 @@ var saveData = obj => data  => {
     return data
 }
 
-var makeContactosTemplate = data => event =>  {
+var makeContactosTemplate = (data, node) => event =>  {
     let acopio = data.filter(el => el.id === event.target.dataset.id)
     let contactos = acopio.length > 0 ? acopio[0].contactos : []
     let template = contactos.length > 0 
@@ -24,7 +24,7 @@ var makeContactosTemplate = data => event =>  {
             )
             .join('')
         :   `<h3>No hay contactos</h3>`
-    document.getElementById('contactos').innerHTML = template
+    node.innerHTML = template
 }
 
 

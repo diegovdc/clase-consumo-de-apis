@@ -2,49 +2,33 @@
     <head>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="./styles.css" rel="stylesheet">
-    
     </head>
+
     <body>
 <!-- Nuestra página -->
-        <h1>HelpBook</h1>
-        <button id="load">Cargar datos</button>
+        <h1 style="text-align: center; font-size: 40px;">
+            HelpBook
+        </h1>
+
+        <button id="load" class="button">Cargar datos</button>
         <br><br>
-        <div class="flex">
-            <div id="container" class="container"><h3>Esperando click para cargar datos</h3></div>
-            <div id="contactos"></div>
-        </div>
+        <div id="container" class="container"><h3>Esperando click para cargar datos</h3></div>
 
 
 <!--  Nuestros scripts -->
 
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script><!-- Libreria para hacer peticiones AJAX usando Promises -->
-        <script src="./template.js"></script><!-- Funciones de ayuda, exporta makeTemplate, saveData, clickEventForAcopios,   makeContactosTemplate y log-->
+        <script src="./templates.js"></script><!-- Funciones de ayuda, exporta: makeTemplate, saveData, clickEventForAcopios,   makeContactosTemplate y log-->
         
         <script>
-            // generamos referencias con el HTML
+            // generamos referencias en el HTML
             var container = document.getElementById('container')   
             var button = document.getElementById('load')
-            var midata = []
-           
+          
             //Función que genera la petición AJAX
             var cargarDatos = (e) => {
                 container.innerHTML = '...cargando datos'
-                axios({
-                    method:'GET',
-                    url:'https://hapi.balterbyte.com/api/acopios/',//URL a donde hacemos la petición
-                    params: {
-                        filter: {
-                            include: ['productos', 'contactos']
-                        }
-                    }
-                })
-                    .then(log)
-                    .then(respuesta => respuesta.data)//extraemos los datos de la respuesta
-                    .then(saveData(midata))
-                    .then(data => makeTemplate(data))//creamos el HTML
-                    .then(template => container.innerHTML = template)//agregamos el HTML a la página
-                    .then(clickEventForAcopios(makeContactosTemplate(midata)))
-                    .catch(console.log)
+                //'https://hapi.balterbyte.com/api/acopios/',//URL a donde haremos la petición
             }
            
             //Al dar click en el boton, hacemos la petición AJAX

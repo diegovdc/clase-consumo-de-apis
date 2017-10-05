@@ -2,3 +2,13 @@
 .flex{display: flex}
 .container {max-height: 100vh; overflow: auto; max-width: 50%;}
 .container .ids{display: none;}
+.button {
+    cursor: pointer;
+    height: 40px;
+    font-size: 20px;
+    -webkit-appearance: none;
+    border: none;
+    color: white;
+    background: #7cb33b;
+}
+.button:hover {background-color: #619c1c}
