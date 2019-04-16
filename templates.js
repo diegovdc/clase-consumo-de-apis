@@ -1,43 +1,32 @@
-var makeTemplate = data =>  
-    data.map(({nombre, direccion, id}) => 
-        `<div>
-           <h3 class="acopio-id" data-id="${id}">${nombre} ${direccion}</h3> 
-           <span class="ids">id: ${id}</span>
-        </div>`
-    )
-    .join('')
+function makeTable(userData) {
+    // Por cada elemento del array de datos de usuario,
+    // generamos una fila con su name, username, email y phone
+    // notar que userData.map nos devuelve una lista de strings
+    // que en este caso son el html de los rows
+    const rows = userData.map(user => 
+    `<tr>
+        <td>${user.name}</td>
+        <td>${user.username}</td>
+        <td>${user.email}</td>
+        <td>${user.phone}</td>
+    </tr>`)
 
-var saveData = obj => data  => {
-    data.forEach(el => obj.push(el))
-    return data
-}
+    // Convertimos el array de rows en un sólo string que usaremos 
+    // dentro del tbody de nuestra tabla
+    const rowsHTML = rows.join('')
 
-var makeContactosTemplate = (data, node) => event =>  {
-    let acopio = data.filter(el => el.id === event.target.dataset.id)
-    let contactos = acopio.length > 0 ? acopio[0].contactos : []
-    let template = contactos.length > 0 
-        ?   contactos.map(({nombre, telefono}) => 
-                `<div>
-                   <h3>${nombre || 'Anónimo'}</h3>
-                   <p>${telefono || 'Sin teléfono'}</p>
-                </div>`
-            )
-            .join('')
-        :   `<h3>No hay contactos</h3>`
-    node.innerHTML = template
-}
-
-
-var clickEventForAcopios = (cb) => () => 
-    document
-        .querySelectorAll('.acopio-id')
-        .forEach(el => 
-            el.addEventListener('click', e => cb(e))
-        )
-
-/**********/
-var log = x => {
-    console.log(x)
-    return x
-}
-
+    // Generamos la tabla
+    return `
+    <table>
+        <thead>
+            <th>Nombre</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+        </thead>
+        <tbody>
+            ${rowsHTML}
+        </tbody>
+    </table>`
+    
+}  

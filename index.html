@@ -7,7 +7,7 @@
     <body>
 <!-- Nuestra página -->
         <h1 style="text-align: center; font-size: 40px;">
-            HelpBook
+            SomeBook
         </h1>
 
         <button id="load" class="button">Cargar datos</button>
@@ -18,17 +18,23 @@
 <!--  Nuestros scripts -->
 
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script><!-- Libreria para hacer peticiones AJAX usando Promises -->
-        <script src="./templates.js"></script><!-- Funciones de ayuda, exporta: makeTemplate, saveData, clickEventForAcopios,   makeContactosTemplate y log-->
+        <script src="./templates.js"></script><!-- Funciones de ayuda, exporta: makeTemplate -->
         
         <script>
-            // generamos referencias en el HTML
+            // traemos los nodos que necesitaremos en el DOM
             var container = document.getElementById('container')   
             var button = document.getElementById('load')
           
-            //Función que genera la petición AJAX
-            var cargarDatos = (e) => {
+            //Función que genera y ejecutar la petición AJAX
+            async function cargarDatos(e) {
+                //usando `.innerHTML` podemos cambiar el html de un nodo
                 container.innerHTML = '...cargando datos'
-                //'https://hapi.balterbyte.com/api/acopios/',//URL a donde haremos la petición
+
+                //URL a donde haremos la petición
+                // 'https://jsonplaceholder.typicode.com/users'
+                const users = (await axios.get('https://jsonplaceholder.typicode.com/users')).data
+             
+                container.innerHTML = makeTable(users)
             }
            
             //Al dar click en el boton, hacemos la petición AJAX

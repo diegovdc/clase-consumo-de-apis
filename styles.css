@@ -1,7 +1,12 @@
-*{font-family: Roboto;}
-.flex{display: flex}
-.container {max-height: 100vh; overflow: auto; max-width: 50%;}
-.container .ids{display: none;}
+*{
+    font-family: Roboto;
+}
+.flex{
+    display: flex
+}
+.container {
+    max-height: 100vh;
+}
 .button {
     cursor: pointer;
     height: 40px;
@@ -12,3 +17,13 @@
     background: #7cb33b;
 }
 .button:hover {background-color: #619c1c}
+
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+th {
+    font-size: 18px;
+    font-weight: bold;
+}
