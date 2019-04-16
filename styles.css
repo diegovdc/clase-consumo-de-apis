@@ -1,22 +1,30 @@
 *{
     font-family: Roboto;
 }
+
 .flex{
     display: flex
 }
+
 .container {
     max-height: 100vh;
 }
+.title {
+    text-align: center;
+    font-size: 40px;
+}
+
 .button {
     cursor: pointer;
     height: 40px;
     font-size: 20px;
-    -webkit-appearance: none;
     border: none;
     color: white;
     background: #7cb33b;
 }
-.button:hover {background-color: #619c1c}
+.button:hover {
+    background-color: #619c1c;
+}
 
 
 th, td {

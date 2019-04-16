@@ -2,7 +2,7 @@ function makeTable(userData) {
     // Por cada elemento del array de datos de usuario,
     // generamos una fila con su name, username, email y phone
     // notar que userData.map nos devuelve una lista de strings
-    // que en este caso son el html de los rows
+    // En este caso son el html de cada uno de los rows
     const rows = userData.map(user => 
     `<tr>
         <td>${user.name}</td>

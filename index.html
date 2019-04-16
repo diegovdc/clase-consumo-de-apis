@@ -6,7 +6,7 @@
 
     <body>
 <!-- Nuestra página -->
-        <h1 style="text-align: center; font-size: 40px;">
+        <h1 class="title">
             SomeBook
         </h1>
 
@@ -30,14 +30,16 @@
                 //usando `.innerHTML` podemos cambiar el html de un nodo
                 container.innerHTML = '...cargando datos'
 
-                //URL a donde haremos la petición
+                //URL a donde haremos la petición (es posible accesar a estos datos copiando directamente la url en el navegador)
                 // 'https://jsonplaceholder.typicode.com/users'
-                const users = (await axios.get('https://jsonplaceholder.typicode.com/users')).data
-             
-                container.innerHTML = makeTable(users)
+                // const usersData = ... // realizar llamada al API usando axios https://github.com/axios/axios#example
+                
+                // makeTable(userData) devuelve un string de HTML
+                // el cual asignamos al `.innerHTML` de container
+                container.innerHTML = makeTable(usersData)
             }
            
-            //Al dar click en el boton, hacemos la petición AJAX
+            //Al dar click en el botón, hacemos la petición AJAX
             button.addEventListener('click', cargarDatos)
 
         </script>
